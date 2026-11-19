@@ -1,62 +1,62 @@
 name: CI
 
 on:
-    push:
-        branches: [master]
-    pull_request:
-        branches: [master]
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
 
 jobs:
-    install-dependencies:
-        name: install dependencies
-        runs-on: ubuntu-latest
+  linters:
+    name: run linters
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v4
-        
-            - uses: actions/setup-python@v5
-              with:
-                  python-version: 3.12
-                  cache: "pip"
-                  cache-dependencies-path: project.toml
+    steps:
+      - uses: actions/checkout@v4
 
-            - name: install dependencies
-              run: |
-                python -m pip install -e ".[dev]"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+          cache: "pip"
+          cache-dependency-path: pyproject.toml
 
+      - run: |
+          python -m pip install -e ".[dev]"
 
-    linters:
-        name: run linters
-        runs-on: ubuntu-latest
+      - name: Check formatting
+        run: |
+          ruff check .
+          ruff format --check .
 
-        needs: [install-dependencies]
+  build:
+    name: build
+    runs-on: ubuntu-latest
 
-        steps:
-          - uses: actions/checkout@v4
-        
-          - uses: actions/setup-python@v5
-            with:
-                python-version: 3.12
-                cache: "pip"
-                cache-dependencies-path: project.toml
+    needs: [linters]
 
-          - run: |
-              python -m pip install -e ".[dev]"
+    steps:
+      - uses: actions/checkout@v4
 
-          - name: Check formatting
-            run: |
-              ruff check .
-              ruff format --check .
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+          cache: "pip"
+          cache-dependency-path: pyproject.toml
 
-    build:
-        name: build docker image
-        runs-on: ubuntu-latest
+      - name: Build whl
+        run: |
+          python -m pip install -e ".[dev]"
+          python -m build --wheel
 
-        needs: [install-dependencies, linters]
+  image:
+    name: build docker image
+    runs-on: ubuntu-latest
 
-        steps:
-          - uses: actions/checkout@v4
-          
-          - name: Build docker image
-            run: |
-              docker build -t my-cli:latest .
+    needs: [linters, build]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: build docker image
+        run: |
+          docker build -t my-cli:latest .
