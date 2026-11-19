@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "csv-inspector"
-version = "0.1.0"
+version = "0.2.0"
 description = "A simple CLI tool for inspecting CSV files"
 requires-python = ">=3.10"
 dependencies = []
 
 [project.scripts]
-csv-inspector = "csv_inspector.cli:cli"
+csv-inspector = "csv_inspector.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

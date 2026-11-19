@@ -2,7 +2,6 @@ pyproject.toml
 src/csv_inspector/__init__.py
 src/csv_inspector/analyzer.py
 src/csv_inspector/cli.py
-src/csv_inspector/tomanalyzer.py
 src/csv_inspector/utils.py
 src/csv_inspector/validator.py
 src/csv_inspector.egg-info/PKG-INFO

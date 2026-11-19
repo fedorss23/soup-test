@@ -1,2 +1,2 @@
 [console_scripts]
-csv-inspector = csv_inspector.cli:cli
+csv-inspector = csv_inspector.cli:main
