@@ -6,4 +6,4 @@ users.csv
 .ruff_cache
 build/
 dist/
-*.egg-info/
+*.egg-info
