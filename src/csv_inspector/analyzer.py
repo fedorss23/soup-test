@@ -1,4 +1,12 @@
 from collections import defaultdict
+from pathlib import Path
+
+import tomllib
+
+
+def load_config(path: Path) -> dict:
+    with path.open("rb") as file:
+        return tomllib.load(file)
 
 
 def analyze_csv(headers: list[str], rows: list[list[str]]) -> dict[str, dict[str, float]]:
