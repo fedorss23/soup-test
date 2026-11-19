@@ -1,10 +1,10 @@
 import csv
-import fcntl
+# import fcntl
 from pathlib import Path
 
 
-def use_f(key: str) -> any:
-    return fcntl.__dict__.get(key)
+# def use_f(key: str) -> any:
+#     return fcntl.__dict__.get(key)
 
 
 def read_csv(file_path: Path) -> tuple[list[str], list[list[str]]]:
