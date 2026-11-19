@@ -1,6 +1,6 @@
 import csv
-from pathlib import Path
 import fcntl
+from pathlib import Path
 
 
 def use_f(key: str) -> any:
