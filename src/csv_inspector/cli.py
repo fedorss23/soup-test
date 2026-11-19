@@ -37,11 +37,6 @@ def main() -> int:
     parser = create_parser()
     args = parser.parse_args()
 
-    schema_path = Path(__file__).parent.parent.parent / "hello.txt"
-
-    with schema_path.open() as file:
-        print(file.read())
-
     try:
         headers, rows = read_csv(args.file)
 
