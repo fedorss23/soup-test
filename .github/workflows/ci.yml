@@ -116,7 +116,7 @@ jobs:
 
     environment:
       name: testpypi
-      url: https://test.pypi.org/p/csv-inspector/
+      url: https://test.pypi.org/p/csv-inspector-12/
 
     permissions:
       id-token: write
