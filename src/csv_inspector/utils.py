@@ -3,7 +3,6 @@ import csv
 # import fcntl
 from pathlib import Path
 
-
 # def use_f(key: str) -> any:
 #     return fcntl.__dict__.get(key)
 
