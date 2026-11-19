@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "csv-inspector-12"
-version = "0.5.0"
+version = "0.6.0"
 description = "A simple CLI tool for inspecting CSV files"
 requires-python = ">=3.10"
 dependencies = []
@@ -24,9 +24,10 @@ target-version = "py310"
 
 [project.optional-dependencies]
 dev = [
-    "pytest>=8.0,<9.0",
-    "ruff>=0.11,<1.0",
-    "build>=1.2,<2.0",
+    "pytest==8.0",
+    "ruff==0.11",
+    "build==1.2",
     "tomli==2.5.0",
-    "exceptiongroup>=1.0.0rc8"
+    "typing-extensions==4.6.0",
+    "exceptiongroup==1.3.1"
 ]
