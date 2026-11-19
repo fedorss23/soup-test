@@ -26,7 +26,7 @@ def create_parser() -> argparse.ArgumentParser:
         required=True,
     )
 
-    for command in ("info", "validate", "analyze", "help"):
+    for command in ("info", "validate", "analyze"):
         command_parser = subparsers.add_parser(command)
         command_parser.add_argument("file", type=Path)
 
@@ -84,8 +84,6 @@ def main() -> int:
                 print(f"  Min: {values['min']}")
                 print(f"  Max: {values['max']}")
                 print(f"  Avg: {values['avg']:.2f}")
-        elif args.command == "help":
-            print("It's instruction for cli")
 
     except (OSError, UnicodeError, csv.Error) as error:
         print(f"Error: {error}", file=sys.stderr)
