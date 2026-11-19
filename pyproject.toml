@@ -3,7 +3,7 @@ requires = ["setuptools>=75", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "csv-inspector"
+name = "csv-inspector-12"
 version = "0.5.0"
 description = "A simple CLI tool for inspecting CSV files"
 requires-python = ">=3.10"
