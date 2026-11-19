@@ -79,6 +79,9 @@ jobs:
         run: |
           python -m pip install --no-cache-dir dist/*whl
           csv-inspector --help
+          touch users.csv
+          cat "name,age\nfedor,13"
+          csv-inspector info users.csv
 
   image:
     name: Build docker image
