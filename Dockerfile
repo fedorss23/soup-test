@@ -1,0 +1,20 @@
+FROM python:3.12-slim AS builder
+
+WORKDIR /app
+
+COPY pyproject.toml Readme.md ./
+COPY src/ ./src/
+
+RUN pip install --no-cache-dir build \
+    && python -m build --wheel
+
+FROM python:3.12-slim AS runtime
+
+WORKDIR /app
+
+COPY --from=builder /app/dist/*.whl /tmp/
+
+RUN pip install --no-cache-dir /tmp/*.whl \
+    && rm -rf /tmp/*.whl
+
+ENTRYPOINT [ "csv-inspector" ]
