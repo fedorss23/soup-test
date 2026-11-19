@@ -26,7 +26,7 @@ def create_parser() -> argparse.ArgumentParser:
         required=True,
     )
 
-    for command in ("info", "validate", "analyze"):
+    for command in ("info", "validate", "analyze", "help"):
         command_parser = subparsers.add_parser(command)
         command_parser.add_argument("file", type=Path)
 

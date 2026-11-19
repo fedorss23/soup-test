@@ -10,7 +10,7 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.scripts]
-csv-inspector = "csv_inspector.cli:main"
+csv-inspector = "csv_inspector.cli:cli"
 
 [tool.setuptools.packages.find]
 where = ["src"]
